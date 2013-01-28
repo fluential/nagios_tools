@@ -49,9 +49,9 @@ def eval_graphite_data(data, seconds):
     # If that data point is None, grab the one before it.
     # If that is None too, return 0.0.
     if seconds <= sample_period:
-        if eval(all_data_points[-1]):
+        if eval(all_data_points[-1]) is not None:
             data_value = float(all_data_points[-1])
-        elif eval(all_data_points[-2]):
+        elif eval(all_data_points[-2]) is not None:
             data_value = float(all_data_points[-2])
         else:
             data_value = 0.0
